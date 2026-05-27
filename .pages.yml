@@ -7,9 +7,8 @@ content:
     label: Projects
     type: collection
     path: src/content/projects
-    filename: "{fields.title}"
-    view:
-      fields: [title, year, sort, tags]
+    format: yaml-frontmatter
+    filename: "{primary}.md"
     fields:
       - name: title
         label: Title
@@ -35,7 +34,10 @@ content:
       - name: gallery
         label: Gallery
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.type}: {fields.caption}"
         fields:
           - name: type
             label: Type
@@ -58,6 +60,7 @@ content:
     label: About
     type: file
     path: src/content/pages/about.md
+    format: yaml-frontmatter
     fields:
       - name: title
         label: Title
@@ -71,6 +74,7 @@ content:
     label: Contact
     type: file
     path: src/content/pages/contact.md
+    format: yaml-frontmatter
     fields:
       - name: title
         label: Title
@@ -84,6 +88,7 @@ content:
     label: Imprint
     type: file
     path: src/content/pages/imprint.md
+    format: yaml-frontmatter
     fields:
       - name: title
         label: Title
