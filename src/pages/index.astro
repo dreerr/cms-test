@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+import { pageUrl } from '../utils';
+
+const projects = await getCollection('projects');
+const featured = projects.sort((a, b) => a.data.sort - b.data.sort).slice(0, 4);
+---
+
+<BaseLayout title="Portfolio">
+  <section class="hero container">
+    <h1>Art, research,<br />and material thought.</h1>
+    <p>Mira Vogt — artist and researcher based in Vienna. Working across installation, sculpture, and documentary practices.</p>
+  </section>
+
+  <section class="section container">
+    <div class="section-header">
+      <h2>Selected Work</h2>
+      <a href={pageUrl('/projects/')}>All projects →</a>
+    </div>
+    <div class="project-grid">
+      {featured.map(project => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</BaseLayout>

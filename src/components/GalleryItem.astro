@@ -1,0 +1,26 @@
+---
+import { assetUrl } from '../utils';
+
+interface Props {
+  item: {
+    type: 'image' | 'video';
+    src: string;
+    caption?: string;
+  };
+}
+
+const { item } = Astro.props;
+const resolvedSrc = assetUrl(item.src);
+---
+
+<figure class="gallery-item">
+  {item.type === 'video' ? (
+    <video controls preload="metadata">
+      <source src={resolvedSrc} />
+      Your browser does not support video playback.
+    </video>
+  ) : (
+    <img src={resolvedSrc} alt={item.caption || ''} loading="lazy" />
+  )}
+  {item.caption && <figcaption>{item.caption}</figcaption>}
+</figure>

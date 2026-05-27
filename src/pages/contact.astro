@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const page = await getEntry('pages', 'contact');
+if (!page) return Astro.redirect('/404');
+const { Content } = await render(page);
+---
+
+<BaseLayout title={page.data.title}>
+  <div class="container">
+    <article class="page-content">
+      <h1>{page.data.title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </div>
+</BaseLayout>

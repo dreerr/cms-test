@@ -1,0 +1,94 @@
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  - name: projects
+    label: Projects
+    type: collection
+    path: src/content/projects
+    filename: "{fields.title}"
+    view:
+      fields: [title, year, sort, tags]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: sort
+        label: Sort Order
+        type: number
+        required: true
+      - name: year
+        label: Year
+        type: number
+      - name: tagline
+        label: Tagline
+        type: string
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: summary
+        label: Summary
+        type: text
+      - name: gallery
+        label: Gallery
+        type: object
+        list: true
+        fields:
+          - name: type
+            label: Type
+            type: select
+            options:
+              values:
+                - image
+                - video
+          - name: src
+            label: File
+            type: image
+          - name: caption
+            label: Caption
+            type: string
+      - name: body
+        label: Content
+        type: rich-text
+
+  - name: about
+    label: About
+    type: file
+    path: src/content/pages/about.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: body
+        label: Content
+        type: rich-text
+
+  - name: contact
+    label: Contact
+    type: file
+    path: src/content/pages/contact.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: body
+        label: Content
+        type: rich-text
+
+  - name: imprint
+    label: Imprint
+    type: file
+    path: src/content/pages/imprint.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: body
+        label: Content
+        type: rich-text

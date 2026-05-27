@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const sorted = projects.sort((a, b) => a.data.sort - b.data.sort);
+---
+
+<BaseLayout title="Projects">
+  <div class="container">
+    <section class="projects-page">
+      <h1>Work</h1>
+      <div class="project-grid">
+        {sorted.map(project => <ProjectCard project={project} />)}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

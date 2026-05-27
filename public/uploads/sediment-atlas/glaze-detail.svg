@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#3d2a1a"/>
+  <rect x="1" y="1" width="798" height="598" fill="none" stroke="#3d2a1a99" stroke-width="2"/>
+  <text x="400" y="278" font-family="system-ui,sans-serif" font-size="20" fill="#ffffff88" text-anchor="middle">SEDIMENT ATLAS</text>
+  <text x="400" y="308" font-family="system-ui,sans-serif" font-size="14" fill="#ffffff55" text-anchor="middle">Glaze detail · iron and clay strata</text>
+</svg>

@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { assetUrl, pageUrl } from '../utils';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, year, tagline, tags, summary, gallery } = project.data;
+const thumb = gallery?.[0];
+const href = pageUrl(`/projects/${project.id}/`);
+---
+
+<a href={href} class="project-card">
+  <div class={`project-card__thumb${!thumb ? ' placeholder' : ''}`}>
+    {thumb
+      ? <img src={assetUrl(thumb.src)} alt={thumb.caption || title} loading="lazy" />
+      : <span>No image</span>
+    }
+  </div>
+  <div class="project-card__body">
+    <div class="project-card__meta">
+      {year && <span>{year}</span>}
+      {tags && tags.length > 0 && <span>{tags[0]}</span>}
+    </div>
+    <h3 class="project-card__title">{title}</h3>
+    {tagline && <p class="project-card__tagline">{tagline}</p>}
+    {summary && <p class="project-card__summary">{summary}</p>}
+    {tags && tags.length > 1 && (
+      <ul class="tags">
+        {tags.slice(1).map(tag => <li class="tag">{tag}</li>)}
+      </ul>
+    )}
+  </div>
+</a>
+
+<style>
+  .project-card {
+    display: block;
+  }
+
+  .project-card__summary {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin-top: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
