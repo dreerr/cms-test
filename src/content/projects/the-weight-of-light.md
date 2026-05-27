@@ -1,31 +1,32 @@
 ---
-title: "The Weight of Light"
-sort: 4
+title: The Weight of Light
+sort: 1
 year: 2022
-tagline: "Long-exposure photographs of molten glass in rural Bohemia"
+tagline: Long-exposure photographs of molten glass in rural Bohemia
 tags:
   - photography
   - documentary
   - industry
-summary: "Forty silver gelatin photographs of glass production processes in the Šumava region, paired with recorded oral histories from three generations of glassblowers at a single family-owned factory."
+summary: Forty silver gelatin photographs of glass production processes in the
+  Šumava region, paired with recorded oral histories from three generations of
+  glassblowers at a single family-owned factory.
 gallery:
   - type: image
     src: /uploads/the-weight-of-light/gather-01.svg
-    caption: "Gathering, Sklárna Moser, Karlovy Vary, 2021"
+    caption: Gathering, Sklárna Moser, Karlovy Vary, 2021
   - type: image
     src: /uploads/the-weight-of-light/furnace.svg
-    caption: "Furnace mouth, 45-second exposure"
+    caption: Furnace mouth, 45-second exposure
   - type: image
     src: /uploads/the-weight-of-light/cooling.svg
-    caption: "Annealing lehr, overnight exposure"
+    caption: Annealing lehr, overnight exposure
   - type: image
     src: /uploads/the-weight-of-light/portrait.svg
-    caption: "Josef Mašek, gaffer, 38 years at Moser"
+    caption: Josef Mašek, gaffer, 38 years at Moser
   - type: image
     src: /uploads/the-weight-of-light/archive.svg
-    caption: "Factory archive, design drawings, 1963–1989"
+    caption: Factory archive, design drawings, 1963–1989
 ---
-
 The project grew out of a residency at Sklárna Moser in Karlovy Vary in the winter of 2021. The factory, founded in 1857 and still producing lead crystal using techniques largely unchanged since the nineteenth century, was facing the prospect of closure — the third generation of the family unable to find buyers who would maintain the craft conditions on which the work depends.
 
 The photographs were made over six weeks using large-format film and exposures ranging from three seconds to eight hours. Molten glass at 1200°C burns film at close range; most images required the camera to be positioned at the edge of the visible spectrum of the material, catching only the aftermath of a gather or the slow cooling of a freshly blown form. The long exposures flatten the distinction between still and moving, solid and liquid.
