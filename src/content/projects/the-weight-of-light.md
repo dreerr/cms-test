@@ -1,5 +1,5 @@
 ---
-title: The Weight of Light
+title: The Weight of Lights in my living room or whatever
 sort: 1
 year: 2022
 tagline: Long-exposure photographs of molten glass in rural Bohemia
@@ -12,7 +12,7 @@ summary: Forty silver gelatin photographs of glass production processes in the
   glassblowers at a single family-owned factory.
 gallery:
   - type: image
-    src: /uploads/the-weight-of-light/gather-01.svg
+    src: /uploads/csm_20160714_Plasmon_MIT_a18ae013ec.jpg
     caption: Gathering, Sklárna Moser, Karlovy Vary, 2021
   - type: image
     src: /uploads/the-weight-of-light/furnace.svg
