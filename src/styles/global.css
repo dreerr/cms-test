@@ -357,12 +357,27 @@ h1, h2, h3, h4 {
   overflow: hidden;
 }
 
+.gallery-item__lightbox {
+  display: block;
+}
+
 .gallery-item img,
 .gallery-item video {
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
   display: block;
+}
+
+.gallery-item__lightbox-link {
+  display: inline-block;
+  margin: 0.75rem 1rem 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .gallery-item figcaption {

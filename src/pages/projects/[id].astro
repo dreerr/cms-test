@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Gallery from '../../components/Gallery.astro';
 import { getCollection, render } from 'astro:content';
+import 'glightbox/dist/css/glightbox.min.css';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -36,4 +37,22 @@ const { title, year, tagline, tags, gallery } = project.data;
 
     <Gallery items={gallery} />
   </div>
+
+  <script>
+    import GLightbox from 'glightbox';
+
+    const initLightbox = () => {
+      GLightbox({
+        selector: '.js-gallery-lightbox',
+        touchNavigation: true,
+        loop: true,
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLightbox, { once: true });
+    } else {
+      initLightbox();
+    }
+  </script>
 </BaseLayout>

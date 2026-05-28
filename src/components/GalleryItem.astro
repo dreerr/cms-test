@@ -15,12 +15,31 @@ const resolvedSrc = assetUrl(item.src);
 
 <figure class="gallery-item">
   {item.type === 'video' ? (
-    <video controls preload="metadata">
-      <source src={resolvedSrc} />
-      Your browser does not support video playback.
-    </video>
+    <>
+      <video controls preload="metadata">
+        <source src={resolvedSrc} />
+        Your browser does not support video playback.
+      </video>
+      <a
+        class="gallery-item__lightbox-link js-gallery-lightbox"
+        href={resolvedSrc}
+        data-gallery="project-gallery"
+        data-type="video"
+        data-title={item.caption || 'Video'}
+      >
+        Open fullscreen
+      </a>
+    </>
   ) : (
-    <img src={resolvedSrc} alt={item.caption || ''} loading="lazy" />
+    <a
+      class="gallery-item__lightbox js-gallery-lightbox"
+      href={resolvedSrc}
+      data-gallery="project-gallery"
+      data-title={item.caption || ''}
+      aria-label={item.caption ? `Open image: ${item.caption}` : 'Open image fullscreen'}
+    >
+      <img src={resolvedSrc} alt={item.caption || ''} loading="lazy" />
+    </a>
   )}
   {item.caption && <figcaption>{item.caption}</figcaption>}
 </figure>
