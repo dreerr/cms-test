@@ -21,7 +21,7 @@ const resolvedSrc = assetUrl(item.src);
         Your browser does not support video playback.
       </video>
       <a
-        class="gallery-item__lightbox-link js-gallery-lightbox"
+        class="gallery-item__lightbox-link glightbox js-gallery-lightbox"
         href={resolvedSrc}
         data-gallery="project-gallery"
         data-type="video"
@@ -32,7 +32,7 @@ const resolvedSrc = assetUrl(item.src);
     </>
   ) : (
     <a
-      class="gallery-item__lightbox js-gallery-lightbox"
+      class="gallery-item__lightbox glightbox js-gallery-lightbox"
       href={resolvedSrc}
       data-gallery="project-gallery"
       data-title={item.caption || ''}
