@@ -1,6 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#141418"/>
-  <rect x="1" y="1" width="798" height="598" fill="none" stroke="#14141899" stroke-width="2"/>
-  <text x="400" y="278" font-family="system-ui,sans-serif" font-size="20" fill="#ffffff88" text-anchor="middle">TENDER MACHINES</text>
-  <text x="400" y="308" font-family="system-ui,sans-serif" font-size="14" fill="#ffffff55" text-anchor="middle">Servo and sensor housing · form II</text>
+  <defs>
+    <linearGradient id="g" x1="0.88" y1="0.18" x2="0.18" y2="0.82">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="52%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)"/>
 </svg>

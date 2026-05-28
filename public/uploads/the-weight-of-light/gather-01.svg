@@ -1,6 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#2a1e0e"/>
-  <rect x="1" y="1" width="798" height="598" fill="none" stroke="#2a1e0e99" stroke-width="2"/>
-  <text x="400" y="278" font-family="system-ui,sans-serif" font-size="20" fill="#ffffff88" text-anchor="middle">THE WEIGHT OF LIGHT</text>
-  <text x="400" y="308" font-family="system-ui,sans-serif" font-size="14" fill="#ffffff55" text-anchor="middle">Gathering · Sklárna Moser, Karlovy Vary, 2021</text>
+  <defs>
+    <linearGradient id="g" x1="0.12" y1="0.88" x2="0.88" y2="0.12">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="52%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)"/>
 </svg>
