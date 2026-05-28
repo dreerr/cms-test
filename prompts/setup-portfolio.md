@@ -1,7 +1,8 @@
 # Portfolio Site Setup Prompt
 
-Use this prompt to scaffold a new artist/creative portfolio that matches the architecture of this repo:
-**Astro v6 + GitHub Pages + Pages CMS**.
+Use this prompt to scaffold or adapt an artist/creative portfolio for:
+**GitHub Pages + Pages CMS**, using **Astro v6** by default.
+If an existing project already uses another static site generator, keep that generator and adapt it for Pages CMS instead of migrating.
 
 ---
 
@@ -9,8 +10,10 @@ Use this prompt to scaffold a new artist/creative portfolio that matches the arc
 
 **Before writing a single file, determine which mode applies:**
 
-- **Fresh repo** — no `src/` directory, no `astro.config.mjs`, or the user explicitly says "start from scratch". Follow the scaffold instructions below.
-- **Existing repo** — any Astro source files already exist. **Follow the "Adapting an existing repo" audit process first.** Only create or rewrite files that fail a compliance check; preserve all content (artist names, copy, project data, styles) that already complies.
+- **Fresh repo** — no app source files exist yet, or the user explicitly says "start from scratch". Follow the scaffold instructions below.
+- **Existing Astro repo** — Astro source files already exist. **Follow the "Adapting an existing repo" audit process first.** Only create or rewrite files that fail a compliance check; preserve all content (artist names, copy, project data, styles) that already complies.
+- **Existing non-Astro static site generator repo** (for example: Eleventy, Hugo, Jekyll, Next static export, VitePress, Nuxt static) — keep that generator and make it Pages CMS compatible instead of migrating to Astro. Audit its existing content model, media paths, and build/deploy setup; add or fix `.pages.yml`, GitHub Pages workflow, and path handling with minimal edits.
+- **HTML-only repo** (plain `.html` + CSS/JS, no generator) — migrate it to Astro and then apply this prompt's Astro + Pages CMS setup.
 
 For a fresh repo: adapt all placeholder names (artist name, site URL, nav items) to the brief given by the user. If no brief is given, ask for: artist name, site URL (for `astro.config.mjs`), and which top-level pages they want beyond Projects.
 
@@ -19,6 +22,10 @@ For a fresh repo: adapt all placeholder names (artist name, site URL, nav items)
 ## Adapting an existing repo
 
 When the repo already has Astro source files, run the following audit before touching anything. Read each listed file, evaluate it against the compliance criteria, and collect all findings. Then apply only the minimal edits needed — **do not rewrite files that already comply, and never discard existing text content, styles, or project data.**
+
+If the repo uses a different static site generator, do **not** run the Astro-specific file checks below as-is. Instead, adapt the same goals to that generator: static output compatible with GitHub Pages, `.pages.yml` aligned to real content frontmatter/data, media mapped to `public/uploads` (or generator-equivalent published directory), and URL/path handling safe for non-root `base` paths.
+
+For any existing repo (Astro or other SSG), treat the current content model as the source of truth. Do **not** enforce the example `projects` field list from this prompt. Infer fields from existing content files, collection schemas, and CMS config already present in the repo.
 
 ### Step 1 — Read everything first
 
@@ -85,12 +92,12 @@ This is the most common breakage point in Astro v6 migrations.
 
 | Check | Compliant if… | Fix |
 |---|---|---|
-| File exists at `src/content.config.ts` | yes | create it (see reference content in Key files section) |
+| File exists at `src/content.config.ts` | yes | create it (see reference content in Key files section; for existing repos, infer schema fields from current content model) |
 | NOT at `src/content/config.ts` | the old path is absent | move it and delete the old file |
 | Uses `glob` loader from `astro/loaders` | `loader: glob(...)` present | rewrite from legacy `type: 'content'` if needed |
 | `z` imported from `astro/zod` | `import { z } from 'astro/zod'` | fix import source if it says `'zod'` standalone |
 | Schema fields match actual `.md` frontmatter | every key used in `.md` files is in the zod schema | add missing fields; use `.optional()` for fields not present in all files |
-| Schema fields match `.pages.yml` fields | every field in `.pages.yml` has a matching zod entry | sync them — the source of truth is the `.md` files as they exist on disk |
+| Schema fields match `.pages.yml` fields | every field in `.pages.yml` has a matching zod entry | sync them — the source of truth is the existing content model on disk (`.md` files first, then current schema/config) |
 
 ---
 
@@ -126,7 +133,7 @@ After fixing, verify `utils.ts` is imported in every component that uses these h
 
 | Check | Compliant if… | Fix |
 |---|---|---|
-| File exists at repo root | yes | create from Key files section, then sync fields to match actual content collections |
+| File exists at repo root | yes | create from Key files section, then sync fields to match actual content collections (for existing repos, infer fields from current content model instead of template fields) |
 | `media.input: public/uploads` | yes | correct if different |
 | `media.output: /uploads` | yes | correct if different |
 | Each collection in `content.config.ts` has a matching block in `.pages.yml` | yes | add missing collection/file blocks |
@@ -136,6 +143,8 @@ After fixing, verify `utils.ts` is imported in every component that uses these h
 | `format: yaml-frontmatter` on all blocks | yes | add if missing |
 
 > **Content preservation rule:** when syncing `.pages.yml` to match the schema, never remove a field that exists in actual `.md` files — only add or rename to align.
+
+> **Existing-project field rule:** never replace an existing project's field structure with the example `projects` fields from this document. Detect and preserve the project's own fields.
 
 ---
 
@@ -216,7 +225,9 @@ Common "needs manual action" items:
 
 ---
 
-## File tree to create
+## File tree to create (fresh Astro repo only)
+
+For existing repos, do not recreate this tree wholesale. Only add missing files required for compliance and only modify files that fail checks.
 
 ```
 .github/
@@ -263,6 +274,8 @@ tsconfig.json
 ---
 
 ## Key files — full content
+
+Use these as defaults for fresh Astro scaffolds. For existing repos, adapt these examples to match the repository's current field names and structure.
 
 ### `package.json`
 
